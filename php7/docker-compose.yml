@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  web:
+    image: httpd:2.4
+    ports:
+      - "80:80"
+    volumes:
+      - ./extra:/usr/local/apache2/conf/extra:rw
+      - ./conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - /var/www/html:/usr/local/apache2/htdocs/
+      - /var/www/html2:/usr/local/apache2/htdocs2/
+
+
+  php7:
+    image: php:7.4-fpm
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./html:/var/www/html:rw
+
+
+  php8: 
+    image: php:8.1-fpm
+    ports:
+      - "9001:9000"
+    volumes:
+      - ./html2:/var/www/html:rw
+
+

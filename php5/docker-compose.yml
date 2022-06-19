@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  web:
+    image: httpd:2.4
+    ports:
+      - "80:80"
+    volumes:
+      - ./extra:/usr/local/apache2/conf/extra
+  php:
+    image: php:7.4-fpm
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/www/html:/var/www/html
+
+  php8:
+    image: php:8.1-fpm
+    ports:
+      - "9001:9000"
+    volumes:
+      - /var/www/html2:/var/www/html
+
+
+
+
+
